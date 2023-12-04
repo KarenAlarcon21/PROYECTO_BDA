@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKey;
-import javax.mail.MessagingException;
+//import javax.mail.MessagingException;
 
 /**
  *
@@ -177,17 +177,17 @@ public class Controlador extends HttpServlet {
                                     + "Atentamente,<br><br>"
                                     + "<strong>ServiSalud EPS</strong>";
 
-                            try {
+                            //try {
 
-                                enviar_correo.Contenido_Correo(correo_destino, asunto, contenido);
+                                //enviar_correo.Contenido_Correo(correo_destino, asunto, contenido);
                                 request.setAttribute("envioExitoso", true);
                                 request.getRequestDispatcher("Recuperar_Password.jsp").forward(request, response);
 
-                            } catch (MessagingException ex) {
+                           // } catch (MessagingException ex) {
 
-                                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                               // Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
 
-                            }
+                            //}
 
                         } catch (Exception ex) {
 
