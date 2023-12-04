@@ -1,0 +1,64 @@
+.social-links {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.galeria-fotos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.galeria-fotos img {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+h3{
+
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.box {
+    background-color: #C9E5BC;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box p {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.box ul {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.box img {
+    align-self: flex-end;
+    margin-left: 25px;
+}
+
+.img_2 {
+    align-self:flex-start;
+    margin-left: 25px;
+}

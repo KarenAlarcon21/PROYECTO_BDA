@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Times New Roman", Times, serif;
+    padding: 2rem;
+    cursor: url(https://cdn-icons-png.flaticon.com/16/11753/11753666.png), auto;
+}
+
+nav {
+    background-color: #58B179;
+    padding: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.titulo_3 {
+
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    color: blue;
+
+}
+
+.label {
+    display: grid;
+    grid-column-start: 2;
+    padding: 1.5rem 0;
+    grid-template-areas: "form-control";
+    justify-content: center;
+    cursor: url(https://cdn-icons-png.flaticon.com/16/11753/11753666.png), auto;
+}
+
+.label > * {
+    grid-area: input;
+}
+
+.span{
+    transform-origin: left;
+    transition: transform .3s, color .3s;
+    cursor: text;
+}
+
+.form-control{
+    height: 120%;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #006400;
+    font: inherit;
+
+    &:focus + .span,
+        &:not(:placeholder-shown) + .span{
+
+        color: #006400;
+        transform: translate(0, -100%) scale(.8);
+    }
+}
+
+.btn{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-right: 20px;
+    -webkit-transition: font-size 1s ease;
+    transition: font-size 1s ease;
+}
+
+.btn:hover{
+    font-size: 20px;
+}
+
+.d-flex{
+
+    margin-bottom: 10px;
+    cursor: url(https://cdn-icons-png.flaticon.com/16/11753/11753666.png), auto;
+
+}
+
+
+
+
