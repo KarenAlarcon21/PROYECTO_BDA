@@ -5,7 +5,7 @@
 package Controlador;
 
 import java.util.Properties;
-import java.util.logging.Level;
+/*import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -14,7 +14,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage;*/
 
 /**
  *
@@ -29,14 +29,14 @@ public class Enviar_Correo {
     private String content;
 
     private Properties mProperties;
-    private Session mSession;
-    private MimeMessage mCorreo;
+    /*private Session mSession;
+    private MimeMessage mCorreo;*/
 
     public Enviar_Correo() {
         mProperties = new Properties();
     }
 
-    public void Contenido_Correo(String correo_destino, String asunto, String contenido) throws MessagingException {
+    public void Contenido_Correo(String correo_destino, String asunto, String contenido) {
 
         emailTo = correo_destino;
         subject = asunto;
@@ -50,7 +50,7 @@ public class Enviar_Correo {
         mProperties.setProperty("mail.smtp.ssl.protocols", "TLSv1.2");
         mProperties.setProperty("mail.smtp.auth", "true");
 
-        mSession = Session.getDefaultInstance(mProperties);
+        /*mSession = Session.getDefaultInstance(mProperties);
 
         try {
 
@@ -70,13 +70,13 @@ public class Enviar_Correo {
 
             Logger.getLogger(Enviar_Correo.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
+        }*/
 
     }
 
     private void Enviar() {
 
-        try {
+        /*try {
 
             Transport mTransport = mSession.getTransport("smtp");
             mTransport.connect(emailFrom, password);
@@ -91,7 +91,7 @@ public class Enviar_Correo {
 
             Logger.getLogger(Enviar_Correo.class.getName()).log(Level.SEVERE, null, ex);
 
-        }
+        }*/
     }
 
 }
