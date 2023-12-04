@@ -13,7 +13,5 @@
     </head>
     <body>
         <h1>Información Paciente</h1>
-        <h3>Daniela la ñoña con cara de mogolla</h3>
-        <h3>Daniel Caremonda :v</h3>
     </body>
 </html>

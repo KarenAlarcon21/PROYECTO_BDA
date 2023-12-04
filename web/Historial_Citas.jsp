@@ -30,6 +30,10 @@
     <body style="margin: 0; padding: 0; background-color: #E5E5E5;"> 
         <h1>Historial de citas médicas</h1>
         <p>Su historial es el siguiente:</p>
+        <form>
+            <label for="fname">Nombre: </label>
+            <input type="text" id="fname" name="fname"> 
+        </form>
         <div>
             <table>
                 <tr>
