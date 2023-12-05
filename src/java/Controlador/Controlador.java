@@ -33,8 +33,12 @@ import javax.crypto.SecretKey;
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
 
-    CitaDTO cita = new CitaDTO();
+    HistorialDTO historial = new HistorialDTO();
     CitaDAO citaDAO = new CitaDAO();
+    Historial_Citas_ReporteDTO historial_citas = new Historial_Citas_ReporteDTO();
+    Historial_Citas_ReporteDAO historial_citasDAO = new Historial_Citas_ReporteDAO();
+    Informe_PacienteDTO informe_paciente = new Informe_PacienteDTO();
+    Informe_PacienteDAO informe_pacienteDAO = new Informe_PacienteDAO();
     String mes;
     String sede;
     ConsultasDTO objetoConsultas = new ConsultasDTO();
@@ -137,14 +141,134 @@ public class Controlador extends HttpServlet {
 
         }
 
+        if (menu.equals("Historial_Citas")) {
+
+            switch (accion) {
+
+                case "Listar":
+
+                    List<Historial_Citas_ReporteDTO> lista = historial_citasDAO.Citas();
+
+                    request.setAttribute("historial_citas", lista);
+
+                    request.getRequestDispatcher("Historial_Citas.jsp").forward(request, response);
+
+                    break;
+
+                case "Filtrar":
+
+                    String identificacion = request.getParameter("txt_PacienteID");
+
+                    List<Historial_Citas_ReporteDTO> list = historial_citasDAO.listar_Citas(identificacion);
+
+                    request.setAttribute("historial_citas", list);
+
+                    request.getRequestDispatcher("Historial_Citas.jsp").forward(request, response);
+
+                    break;
+
+            }
+
+        }
+
+        if (menu.equals("Información_Pacientes")) {
+
+            switch (accion) {
+
+                case "Listar":
+
+                    List<Informe_PacienteDTO> lista = informe_pacienteDAO.listar_pacientes();
+
+                    request.setAttribute("informe_paciente", lista);
+
+                    request.getRequestDispatcher("Información_Pacientes.jsp").forward(request, response);
+
+                    break;
+
+                case "Filtrar":
+
+                    String identificacion = request.getParameter("txt_PacienteID");
+
+                    List<Informe_PacienteDTO> list = informe_pacienteDAO.listar_pacientes(identificacion);
+
+                    request.setAttribute("informe_paciente", list);
+
+                    request.getRequestDispatcher("Información_Pacientes.jsp").forward(request, response);
+
+                    break;
+
+            }
+
+        }
+
         if (menu.equals("Historia_Medica")) {
 
             switch (accion) {
 
                 case "Listar":
 
-                    // List<List<Object>> lista = citaDAO.listar();
-                    //request.setAttribute("pacientes", lista);
+                    List<HistorialDTO> lista = citaDAO.Listar();
+
+                    request.setAttribute("citas", lista);
+
+                    request.getRequestDispatcher("Historia_Medica.jsp").forward(request, response);
+
+                    break;
+
+                case "Filtrar":
+
+                    String identificacion = request.getParameter("txt_PacienteID");
+
+                    historial.setIdentificacion(identificacion);
+
+                    List<HistorialDTO> list = citaDAO.Filtrar(historial);
+
+                    request.setAttribute("citas", list);
+
+                    request.getRequestDispatcher("Historia_Medica.jsp").forward(request, response);
+
+                    break;
+
+            }
+
+        }
+
+        if (menu.equals("Remitir_Pacientes")) {
+
+            switch (accion) {
+
+                case "Listar":
+
+                    List<HistorialDTO> listas = citaDAO.Listar();
+
+                    request.setAttribute("cita", listas);
+
+                    request.getRequestDispatcher("Remitir_Pacientes.jsp").forward(request, response);
+                    break;
+
+                case "Filtrar":
+
+                    String identificacion = request.getParameter("txt_PacienteID");
+
+                    historial.setIdentificacion(identificacion);
+
+                    List<HistorialDTO> list = citaDAO.Filtrar(historial);
+
+                    request.setAttribute("cita", list);
+
+                    request.getRequestDispatcher("Remitir_Pacientes.jsp").forward(request, response);
+
+                    break;
+
+                case "Remitir":
+
+                    String ID = request.getParameter("txtID");
+                    String Licencia = request.getParameter("txtEspecialista");
+                    String Nombre = request.getParameter("txtNombreE");
+                    String Ciudad = request.getParameter("txtCiudad");
+                    String Sede = request.getParameter("txtSede");
+                    String Fecha = request.getParameter("calendario");
+                    
                     break;
 
             }
@@ -348,7 +472,6 @@ public class Controlador extends HttpServlet {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                         
                     }*/
-
                     request.getRequestDispatcher("Reportes.jsp").forward(request, response);
 
                     break;

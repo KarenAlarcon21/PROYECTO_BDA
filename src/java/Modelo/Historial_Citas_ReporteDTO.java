@@ -10,7 +10,15 @@ package Modelo;
  */
 public class Historial_Citas_ReporteDTO {
 
-    private String Encargado, Licencia_Medica, Nombre, Identificacion_p, Edad, Programa, fecha, asistencia;
+    private String ID, Encargado, Licencia_Medica, Nombre, Identificacion_p, Edad, Programa, fecha, asistencia;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public String getEncargado() {
         return Encargado;

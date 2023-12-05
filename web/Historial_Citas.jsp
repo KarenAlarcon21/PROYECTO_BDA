@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page import = "Modelo.MedicoDTO" %>
+<%@page import = "Modelo.*" %>
+<%@ page import="java.util.List" %>
 
 <% HttpSession sesion = request.getSession();
 
@@ -30,14 +30,18 @@ if(medico == null){
     <body style="margin: 0; padding: 0; background-color: #E5E5E5;"> 
         <header class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
             <h1 class="m-0">Historial Citas</h1>
-            <div class="d-flex align-items-center">
-                <div class="form-group m-0 me-3">
-                    <label class="label mb-0">
-                        <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
-                        <span class="span">Buscar Paciente:</span>
-                    </label>
-                </div>
-                <input type="submit" value="PacienteID" class="boton-redondo">
+            <div class="custom-form">
+                <form action="Controlador" method="POST" class="d-flex">
+                    <div class="form-group m-0 me-3">
+                        <label class="label mb-0">
+                            <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
+                            <span class="span">Buscar Paciente:</span>
+                        </label>
+                    </div>
+                    <input type="hidden" name="menu" value="Historial_Citas">
+                    <input type="hidden" name="accion" value="Filtrar">
+                    <input type="submit" class="boton-redondo">
+                </form>
             </div>
         </header>
         <hr style="color: green;"><br><br>
@@ -46,40 +50,54 @@ if(medico == null){
                 <thead>
                     <tr style="color: red;">
                         <th>ID CITA</th>
-                        <th>ENCARGADO</th>
+                        <th>MÉDICO</th>
                         <th>LICENCIA MÉDICA</th>
-                        <th>NOMBRE</th>
+                        <th>PACIENTE</th>
                         <th>IDENTIFICACIÓN</th>
                         <th>EDAD</th>
                         <th>PROGRAMA</th>
                         <th>FECHA CITA</th>
                         <th>ASISTENCIA</th>
-                        <th>CANCELAR CITA</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <%
+                         List<Historial_Citas_ReporteDTO> citas = (List<Historial_Citas_ReporteDTO>) request.getAttribute("historial_citas");
+
+                         if (citas != null) {
+
+                             for (Historial_Citas_ReporteDTO historial : citas) {
+                    %>
                     <tr>
-                        <td>ID Cita 1</td>
-                        <td>Encargado 1</td>
-                        <td>Licencia 1</td>
-                        <td>Nombre 1</td>
-                        <td>ID 1</td>
-                        <td>Edad 1</td>
-                        <td>Programa 1</td>
-                        <td>Fecha Cita 1</td>
+                        <td><b><%= historial.getID() %></b></td>
+                        <td><%= historial.getEncargado() %></td>
+                        <td><%= historial.getLicencia_Medica() %></td>
+                        <td><b><%= historial.getNombre() %></b></td>
+                        <td><%= historial.getIdentificacion_p() %></td>
+                        <td><%= historial.getEdad() %></td>
+                        <td><%= historial.getPrograma() %></td>
+                        <td><b><%= historial.getFecha() %></b></td>
                         <td>
                             <div class="form-group m-0 me-3">
-                                <h5></h5> 
+                                <h5></h5>
                             </div>
-                            <input type="label" value="Aceptado" class="boton-redondo">
-                        </td>
-                        <td>
-                            <div class="form-group m-0 me-3">
-                                <h5></h5> 
-                            </div>
-                            <input type="submit" value="Cancelar" class="boton-redondo-x">
+                            <%
+                                if (historial.getAsistencia().equals("1")) {
+                            %>
+                            <input type="label" value="Asistió" class="boton-redondo">
+                            <%
+                                } else {
+                            %>
+                            <input type="label" value="No Asistió" class="boton-redondo-x">
+                            <%
+                                }
+                            %>
                         </td>
                     </tr>
+                    <%
+                            }
+                        }
+                    %> 
                 </tbody>
             </table>
         </div>        

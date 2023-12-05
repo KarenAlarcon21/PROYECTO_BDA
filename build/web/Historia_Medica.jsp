@@ -4,9 +4,9 @@
     Author     : ADMIN
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page import = "Modelo.MedicoDTO" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import = "Modelo.*" %>
+<%@ page import="java.util.List" %>
 
 <% HttpSession sesion = request.getSession();
 
@@ -32,18 +32,26 @@ if(medico == null){
             justify-content: left;
 
         }
+        .custom-form form {
+            display: flex;
+            align-items: center;
+        }
     </style>
     <body style="margin: 0; padding: 0; background-color: #E5E5E5;"> 
         <header class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
             <h1 class="m-0">Historia Médica</h1>
-            <div class="d-flex align-items-center">
-                <div class="form-group m-0 me-3">
-                    <label class="label mb-0">
-                        <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
-                        <span class="span">Buscar Paciente:</span>
-                    </label>
-                </div>
-                <input type="submit" value="PacienteID" class="boton-redondo">
+            <div class="custom-form">
+                <form action="Controlador" method="POST" class="d-flex">
+                    <div class="form-group m-0 me-3">
+                        <label class="label mb-0">
+                            <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
+                            <span class="span">Buscar Paciente:</span>
+                        </label>
+                    </div>
+                    <input type="hidden" name="menu" value="Historia_Medica">
+                    <input type="hidden" name="accion" value="Filtrar">
+                    <input type="submit" class="boton-redondo">
+                </form>
             </div>
         </header>
         <hr style="color: green;"><br><br>
@@ -62,26 +70,29 @@ if(medico == null){
                         <th>DIAGNÓSTICO</th>
                     </tr> 
                 </thead>
-                <tbody>
-                    <%-- 
-        <c:forEach var="fila" items="${pacientes}">
-            <tr>
-                <c:forEach var="dato" items="${fila}">
-                    <td>${dato}</td>
-                </c:forEach>
-            </tr>
-        </c:forEach>
-                    --%><tr>
-                        <td><b>Nombre</b></td>
-                        <td>Identificación</td>
-                        <td>Edad</td>
-                        <td>Médico</td>
-                        <td>Especialidad</td>
-                        <td>Ciudad</td>
-                        <td>Sede</td>
-                        <td><b>2022-03-01</b></td>
-                        <td>Sin síntomas</td>
+                <tbody>                    
+                    <%
+                        List<HistorialDTO> citas = (List<HistorialDTO>) request.getAttribute("citas");
+    
+                        if (citas != null) {
+                    
+                            for (HistorialDTO historial : citas) {
+                    %>
+                    <tr>
+                        <td><b><%= historial.getNombre() + " " + historial.getApellido() %></b></td>
+                        <td><%= historial.getIdentificacion() %></td>
+                        <td><%= historial.getEdad() %></td>
+                        <td><%= historial.getMedico() %></td>
+                        <td><%= historial.getEspecialidad() %></td>
+                        <td><%= historial.getCiudad() %></td>
+                        <td><%= historial.getSede() %></td>
+                        <td><b><%= historial.getFecha() %></b></td>
+                        <td><%= historial.getDiagnostico() %></td>
                     </tr>
+                    <%
+                            }
+                        }
+                    %>
                 </tbody>
             </table>
         </div><br>

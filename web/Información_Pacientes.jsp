@@ -5,10 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "Modelo.*" %>
 <%@ page import="java.util.List" %>
-<%@ page import="Modelo.*" %>
 
-<%@page import = "Modelo.MedicoDTO" %>
+
 
 <% HttpSession sesion = request.getSession();
 
@@ -33,14 +33,18 @@ if(medico == null){
     <body style="margin: 0; padding: 0; background-color: #E5E5E5;"> 
         <header class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
             <h1 class="m-0">Información Pacientes</h1>
-            <div class="d-flex align-items-center">
-                <div class="form-group m-0 me-3">
-                    <label class="label mb-0">
-                        <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
-                        <span class="span">Buscar Paciente:</span>
-                    </label>
-                </div>
-                <input type="submit" value="PacienteID" class="boton-redondo">
+            <div class="custom-form">
+                <form action="Controlador" method="POST" class="d-flex">
+                    <div class="form-group m-0 me-3">
+                        <label class="label mb-0">
+                            <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
+                            <span class="span">Buscar Paciente:</span>
+                        </label>
+                    </div>
+                    <input type="hidden" name="menu" value="Información_Pacientes">
+                    <input type="hidden" name="accion" value="Filtrar">
+                    <input type="submit" class="boton-redondo">
+                </form>
             </div>
         </header>
         <hr style="color: green;"><br><br>
@@ -59,7 +63,7 @@ if(medico == null){
                 </thead>
                 <tbody>                    
                     <%
-                        List<Informe_PacienteDTO> pacientes = (List<Informe_PacienteDTO>) request.getAttribute("pacientes");
+                        List<Informe_PacienteDTO> pacientes = (List<Informe_PacienteDTO>) request.getAttribute("informe_paciente");
                         
                         if (pacientes != null) {
                         
@@ -67,7 +71,7 @@ if(medico == null){
                             
                     %>
                     <tr>
-                        <td><%= ip.getNombre() %></td>
+                        <td><%= ip.getNombre() + " " + ip.getApellido() %></td>
                         <td><%= ip.getIdentificacion() %></td>
                         <td><%= ip.getDireccion() %></td>
                         <td><%= ip.getTelefono() %></td>

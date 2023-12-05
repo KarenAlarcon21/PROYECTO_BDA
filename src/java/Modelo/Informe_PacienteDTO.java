@@ -8,10 +8,9 @@ package Modelo;
  *
  * @author FAMILIA PC
  */
-
 public class Informe_PacienteDTO {
 
-    private String nombre, identificacion, direccion, telefono, correo_electronico, ciudad_afiliacion, programa;
+    private String nombre, apellido, identificacion, direccion, telefono, correo_electronico, ciudad_afiliacion, programa;
 
     public String getNombre() {
         return nombre;
@@ -19,6 +18,14 @@ public class Informe_PacienteDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getIdentificacion() {

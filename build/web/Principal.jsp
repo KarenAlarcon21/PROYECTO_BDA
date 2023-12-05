@@ -45,25 +45,30 @@ if(medico == null){
                             </form>
                         </div>
                         <div>
-                            <form type="hidden" target="myFrame" action="Historial_Citas.jsp">
+                            <form target="myFrame" action="Controlador" method="POST">
+                                <input type="hidden" name="menu" value="Historial_Citas">
+                                <input type="hidden" name="accion" value="Listar">
                                 <input type="submit" value="Historial Citas" class="btn btn-outline-light btn-notborder">
                             </form>
                         </div>
                         <div>
-                            <form type="hidden" target="myFrame" action="Información_Pacientes.jsp">
+                            <form target="myFrame" action="Controlador" method="POST">
+                                <input type="hidden" name="menu" value="Información_Pacientes">
+                                <input type="hidden" name="accion" value="Listar">
                                 <input type="submit" value="Información Pacientes" class="btn btn-outline-light btn-notborder">
                             </form>
                         </div>
                         <div>
-                            <form target="myFrame" action="Remitir_Pacientes.jsp">
+                            <form target="myFrame" action="Controlador" method="POST">
+                                <input type="hidden" name="menu" value="Remitir_Pacientes">
+                                <input type="hidden" name="accion" value="Listar">
                                 <input type="submit" value="Remitir Pacientes" class="btn btn-outline-light btn-notborder">
                             </form>
                         </div>
                         <div>
-                            <!--<form target="myFrame" action="Controlador" method="POST">-->
-                            <form target="myFrame" action="Historia_Medica.jsp">
-                                <!--<input type="hidden" name="menu" value="Historia_Medica">
-                                <input type="hidden" name="accion" value="Listar">-->
+                            <form target="myFrame" action="Controlador" method="POST">
+                                <input type="hidden" name="menu" value="Historia_Medica">
+                                <input type="hidden" name="accion" value="Listar">
                                 <input type="submit" value="Historia Médica" class="btn btn-outline-light btn-notborder">
                             </form>
                         </div>

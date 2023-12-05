@@ -20,33 +20,36 @@ public class CitaDAO {
     PreparedStatement ps;
     ResultSet rs;
 
-    public List<List<Object>> Filtrar(PacienteDTO paciente) {
+    public List Filtrar(HistorialDTO historial) {
 
-        String sql = "SELECT p.nombre, p.apellido, TIMESTAMPDIFF(YEAR, p.fecha_nto, CURDATE()) AS Edad, m.nombre AS Medico, em.especialidad, ci.ciudad, s.nombre AS sede, c.fecha, c.diagnostico AS Diagnostico FROM Paciente p INNER JOIN Cita c ON (p.identificacion = c.identificacion_p) INNER JOIN Medico m USING (licencia_medica) INNER JOIN especialidad_medico em ON (m.id_especialidad = em.id) INNER JOIN Sede s ON (c.id_sede = s.id) INNER JOIN Ciudad ci ON (s.id_ciudad = ci.id) WHERE p.identificacion = ?";
-        List<List<Object>> lista = new ArrayList<>();
+        String sql = "SELECT p.nombre, p.apellido, p.identificacion, TIMESTAMPDIFF(YEAR, p.fecha_nto, CURDATE()) AS Edad, m.nombre AS Medico, em.especialidad, ci.ciudad, s.nombre AS sede, c.fecha, c.diagnostico AS Diagnostico FROM Paciente p INNER JOIN Cita c ON (p.identificacion = c.identificacion_p) INNER JOIN Medico m USING (licencia_medica) INNER JOIN especialidad_medico em ON (m.id_especialidad = em.id) INNER JOIN Sede s ON (c.id_sede = s.id) INNER JOIN Ciudad ci ON (s.id_ciudad = ci.id) WHERE p.identificacion = ?";
+        
+        List<HistorialDTO> lista = new ArrayList<>();
 
         try {
 
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, paciente.getIdentificacion());
+            ps.setString(1, historial.getIdentificacion());
             rs = ps.executeQuery();
 
             if (rs.next()) {
 
-                List<Object> fila = new ArrayList<>();
+                HistorialDTO hitorial = new HistorialDTO();
+                
+                hitorial.setNombre(rs.getString("nombre"));
+                hitorial.setApellido(rs.getString("apellido"));
+                hitorial.setIdentificacion(rs.getString("identificacion"));
+                hitorial.setEdad(rs.getString("Edad"));
+                hitorial.setMedico(rs.getString("Medico"));
+                hitorial.setEspecialidad(rs.getString("especialidad"));
+                hitorial.setCiudad(rs.getString("ciudad"));
+                hitorial.setSede(rs.getString("sede"));
+                hitorial.setFecha(rs.getString("fecha"));
+                hitorial.setDiagnostico(rs.getString("Diagnostico"));
 
-                fila.add(rs.getString("nombre"));
-                fila.add(rs.getString("apellido"));
-                fila.add(rs.getInt("Edad"));
-                fila.add(rs.getString("Medico"));
-                fila.add(rs.getString("especialidad"));
-                fila.add(rs.getString("ciudad"));
-                fila.add(rs.getString("sede"));
-                fila.add(rs.getString("fecha"));
-                fila.add(rs.getString("Diagnostico"));
-
-                lista.add(fila);
+                lista.add(hitorial);
+                
             }
 
         } catch (Exception e) {
@@ -58,31 +61,33 @@ public class CitaDAO {
         return lista;
     }
 
-    public List<List<Object>> Listar() {
+    public List Listar() {
 
-        String sql = "SELECT p.nombre, p.apellido, TIMESTAMPDIFF(YEAR, p.fecha_nto, CURDATE()) AS Edad, m.nombre AS Medico, em.especialidad, ci.ciudad, s.nombre AS sede, c.fecha, c.diagnostico AS Diagnostico FROM Paciente p INNER JOIN Cita c ON (p.identificacion = c.identificacion_p) INNER JOIN Medico m USING (licencia_medica) INNER JOIN especialidad_medico em ON (m.id_especialidad = em.id) INNER JOIN Sede s ON (c.id_sede = s.id) INNER JOIN Ciudad ci ON (s.id_ciudad = ci.id) ORDER BY `c`.`fecha` DESC;";
-        List<List<Object>> lista = new ArrayList<>();
+        String sql = "SELECT p.nombre, p.apellido, p.identificacion, TIMESTAMPDIFF(YEAR, p.fecha_nto, CURDATE()) AS Edad, m.nombre AS Medico, em.especialidad, ci.ciudad, s.nombre AS sede, c.fecha, c.diagnostico AS Diagnostico FROM Paciente p INNER JOIN Cita c ON (p.identificacion = c.identificacion_p) INNER JOIN Medico m USING (licencia_medica) INNER JOIN especialidad_medico em ON (m.id_especialidad = em.id) INNER JOIN Sede s ON (c.id_sede = s.id) INNER JOIN Ciudad ci ON (s.id_ciudad = ci.id) ORDER BY `c`.`fecha` DESC;";
+        List<HistorialDTO> lista = new ArrayList<>();
 
         try {
+            
             con = cn.getConexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
             while (rs.next()) {
 
-                List<Object> fila = new ArrayList<>();
+                HistorialDTO hitorial = new HistorialDTO();
 
-                fila.add(rs.getString("nombre"));
-                fila.add(rs.getString("apellido"));
-                fila.add(rs.getInt("Edad"));
-                fila.add(rs.getString("Medico"));
-                fila.add(rs.getString("especialidad"));
-                fila.add(rs.getString("ciudad"));
-                fila.add(rs.getString("sede"));
-                fila.add(rs.getString("fecha"));
-                fila.add(rs.getString("Diagnostico"));
+                hitorial.setNombre(rs.getString("nombre"));
+                hitorial.setApellido(rs.getString("apellido"));
+                hitorial.setIdentificacion(rs.getString("identificacion"));
+                hitorial.setEdad(rs.getString("Edad"));
+                hitorial.setMedico(rs.getString("Medico"));
+                hitorial.setEspecialidad(rs.getString("especialidad"));
+                hitorial.setCiudad(rs.getString("ciudad"));
+                hitorial.setSede(rs.getString("sede"));
+                hitorial.setFecha(rs.getString("fecha"));
+                hitorial.setDiagnostico(rs.getString("Diagnostico"));
 
-                lista.add(fila);
+                lista.add(hitorial);
 
             }
 
