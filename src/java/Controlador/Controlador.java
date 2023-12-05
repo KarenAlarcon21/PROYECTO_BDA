@@ -19,6 +19,8 @@ import java.time.LocalDate;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKey;
@@ -30,6 +32,9 @@ import javax.crypto.SecretKey;
  */
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
+    
+    CitaDTO cita = new CitaDTO();
+    CitaDAO citaDAO = new CitaDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -123,6 +128,21 @@ public class Controlador extends HttpServlet {
                 default:
 
                     request.getRequestDispatcher("index.jsp").forward(request, response);
+
+            }
+
+        }
+
+        if (menu.equals("Historia_Medica")) {
+
+            switch (accion) {
+
+                case "Listar":
+                    
+                    List<List<Object>> lista = citaDAO.listar();
+                    request.setAttribute("pacientes", lista);
+
+                    break;
 
             }
 

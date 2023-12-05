@@ -53,18 +53,20 @@
                         <th>NOMBRE</th>
                         <th>IDENTIFICACIÓN</th>
                         <th>EDAD</th>
+                        <th>MÉDICO ENCARGADO</th>
+                        <th>ESPECIALIDAD</th>
+                        <th>CIUDAD</th>
+                        <th>SEDE</th>
                         <th>FECHA DE CITA</th>
                         <th>DIAGNÓSTICO</th>
                     </tr> 
                 </thead>
                 <tbody>
-                <c:forEach var = "paciente" items ="${pacientes}">
+                <c:forEach var="fila" items="${pacientes}">
                     <tr>
-                        <td><b>${paciente.getNombre() + paciente.getApellido()}</b></td>
-                        <td>${paciente.getIdentificacion()}</td>
-                        <td>35</td>
-                        <td><b>2022-03-01</b></td>
-                        <td>Sin síntomas</td>
+                    <c:forEach var="dato" items="${fila}">
+                        <td>${dato}</td>
+                    </c:forEach>
                     </tr>
                 </c:forEach>
                 </tbody>

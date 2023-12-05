@@ -53,17 +53,24 @@
                         <th>NOMBRE</th>
                         <th>IDENTIFICACIÓN</th>
                         <th>EDAD</th>
-                        <th>FECHA DE CITA</th>
+                        <th>MÉDICO ENCARGADO</th>
+                        <th>ESPECIALIDAD</th>
+                        <th>CIUDAD</th>
+                        <th>SEDE</th>
                         <th>FECHA DE CITA</th>
                         <th>DIAGNÓSTICO</th>
                     </tr> 
                 </thead>
                 <tbody>
-                <c:forEach var = "paciente" items ="${pacientes}">
+                <c:forEach var = "cita" items ="${pacientes}">
                     <tr>
-                        <td><b>${paciente.getNombre() + paciente.getApellido()}</b></td>
-                        <td>${paciente.getIdentificacion()}</td>
-                        <td>35</td>
+                        <td><b>${cita.getNombre() + cita.getApellido()}</b></td>
+                        <td>${cita.getIdentificacion()}</td>
+                        <td>${cita.getIdentificacion()}</td>
+                        <td>${cita.getIdentificacion()}</td>
+                        <td>${cita.getIdentificacion()}</td>
+                        <td>Bogotá</td>
+                        <td>Carrera 7</td>
                         <td><b>2022-03-01</b></td>
                         <td>Sin síntomas</td>
                     </tr>
