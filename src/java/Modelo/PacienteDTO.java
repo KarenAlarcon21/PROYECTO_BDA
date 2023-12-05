@@ -19,6 +19,7 @@ public class PacienteDTO {
     private int id_ciudad_residencia;
     private int id_ciudad_afiliacion;
     private String fecha_nacimiento;
+    private int edad;
     private int id_ciudad_lugar_nacimiento;
 
     public String getIdentificacion() {
@@ -91,6 +92,14 @@ public class PacienteDTO {
 
     public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     public int getId_ciudad_lugar_nacimiento() {

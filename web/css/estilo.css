@@ -82,6 +82,33 @@ nav ul {
 
 }
 
+table {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    border: 1px solid #99b89c;
+    color: #b4583c;
+    padding: 20px;
+    text-align: center;
+    background-color: #d9d9d9;
+}
+td  {
+    border: 1px solid #99b89c;
+    padding: 15px;
+    text-align: center;
+}
 
-
+.boton-redondo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/190/190411.png');
+    background-size: cover;
+    color: white;
+    font-size: 0px;
+    border: none;
+}
 

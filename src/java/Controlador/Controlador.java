@@ -178,17 +178,13 @@ public class Controlador extends HttpServlet {
                                     + "<strong>ServiSalud EPS</strong>";
 
                             //try {
+                            //enviar_correo.Contenido_Correo(correo_destino, asunto, contenido);
+                            request.setAttribute("envioExitoso", true);
+                            request.getRequestDispatcher("Recuperar_Password.jsp").forward(request, response);
 
-                                //enviar_correo.Contenido_Correo(correo_destino, asunto, contenido);
-                                request.setAttribute("envioExitoso", true);
-                                request.getRequestDispatcher("Recuperar_Password.jsp").forward(request, response);
-
-                           // } catch (MessagingException ex) {
-
-                               // Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-
+                            // } catch (MessagingException ex) {
+                            // Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                             //}
-
                         } catch (Exception ex) {
 
                             ex.printStackTrace();
@@ -210,38 +206,12 @@ public class Controlador extends HttpServlet {
 
             switch (accion) {
 
-                case "Inicio":
+                case "Cerrar Sesion":
 
-                    request.getRequestDispatcher("Principal.jsp").forward(request, response);
-
-                    break;
-
-                case "Citas_Agendadas":
-
-                    //Aqui el medico puede ver las citas que tiene agendadss en el dia
-                    break;
-
-                case "Historial_Citas":
-
-                    //Aqui puede ver el historial de las citas de las que ha estado encargado, tanto como la asistencia de los pacientes
-                    break;
-
-                case "Informacion_Pacientes":
-
-                    //Aqui podrar visualizar el historial medico de un paciente en especifico
-                    break;
-
-                case "Remitir_Paciente":
-
-                    //Aqui puede hacer el traslado de un paciente
-                    break;
-
-                case "Cerrar_Sesion":
-
-                    Object usuario = sesion.getAttribute("usuario");
+                    /*Object usuario = sesion.getAttribute("usuario");
 
                     sesion.removeAttribute("usuario");
-                    sesion.invalidate();
+                    sesion.invalidate();*/
                     request.getRequestDispatcher("index.jsp").forward(request, response);
 
                     break;

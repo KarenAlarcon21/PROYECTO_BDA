@@ -52,7 +52,7 @@
                 </div>
                 <div class = "form-group">
                     <label class="label">
-                        <input type="text" name="txttelefono1" class="form-control" 
+                        <input type="text" name="txttelefono" class="form-control" 
                                placeholder=" ">
                         <span class="span">Número de Telefono</span>
                     </label>
@@ -107,12 +107,10 @@
                     <div class = "d-grid gap-2 col-5 mx-auto">
                         <input type ="submit" name="accion" value="Regresar" class="btn btn-outline-danger">
                     </div> 
-
                     <div class = "d-grid gap-2 col-5 mx-auto">
                         <input type ="submit" name="accion" value="Agendar Cita" class="btn btn-outline-success">
                     </div> 
                 </div>    
-
             </form>
             <script src="js/Calendario.js"></script>
         </div>
