@@ -27,15 +27,17 @@ sendButton.addEventListener('click', function () {
 function addMessageToChat(message, type) {
     let messageElement = document.createElement('p');
     messageElement.classList.add(type);
-    messageElement.textContent = message;
+    messageElement.innerHTML = message;
     chat.appendChild(messageElement);
     chat.scrollTop = chat.scrollHeight;
 }
 
 function getBotResponse(message) {
+    let bandera=0;
     let response = '';
-    let messageLowerCase = message.toLowerCase();
+  
 
+       let messageLowerCase = message.toLowerCase();
     switch (messageLowerCase) {
 
         case 'hola':
@@ -60,19 +62,50 @@ function getBotResponse(message) {
             break;
 
         case 'cómo usar la página web':
-            response = 'El uso de la página web implica seguir estos pasos:<br><br>' +
-                    '1. El usuario debe ingresar su nombre de usuario y contraseña.<br><br>' +
-                    '2. Tras el inicio de sesión, se accede a la página principal.<br><br>' +
-                    '3. En la barra de navegación ubicada en la parte superior, se encuentran diversas opciones.<br><br>' +
-                    '4. Seleccionar una opción conduce a la página correspondiente.<br><br>' +
+            response = 'El uso de la página web implica seguir estos pasos: <br><br>' +
+                    '1. El usuario debe ingresar su nombre de usuario y contraseña. <br><br>' +
+                    '2. Tras el inicio de sesión, se accede a la página principal. <br><br>' +
+                    '3. En la barra de navegación ubicada en la parte superior, se encuentran diversas opciones. <br><br>' +
+                    '4. Seleccionar una opción conduce a la página correspondiente. <br><br>' +
                     '¿Tienes alguna otra pregunta?';
+                   
             break;
 
+        case 'reportes':
+            response = 'Los reportes que puedo generar son los siguientes: <br><br>' +
+                    '1.Consolidado mensual de la cantidad de pacientes ingresados a medicina general, especialidad o urgencias.<br><br>' +
+                    '2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br><br>' +
+                    '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br><br>' +
+                    '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br><br>' +
+                    '5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>' +
+                    'elige el numero del reporte que quires solicitar';
+             bandera=1;
+            break;
 
         case 'cómo cancelar una cita':
             response = 'Si deseas cancelar una cita, puedes hacerlo a través de la página web. Simplemente inicia sesión en tu cuenta, selecciona la cita que deseas cancelar y sigue las instrucciones para cancelarla. Si la cita ya ha pasado, el costo de la cancelación podría aplicarse.';
             break;
 
+          case '1':
+                response= '1.Consolidado mensual de la cantidad de pacientes ingresados a medicina general, especialidad o urgencias.<br><br>';
+                break;
+            
+            case '2':
+            response='2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br><br>';
+                break;
+                
+            case '3':
+               response = '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br><br>';
+            break;
+           
+            case '4':
+                response= '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br><br>';
+                break;
+                
+            case '5':
+            response='5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>';
+                break;
+                
         case 'adios':
             chat.innerHTML = '';
             chatbot.classList.add('hidden');
@@ -80,7 +113,9 @@ function getBotResponse(message) {
             break;
         default:
             response = 'Lo siento, no entiendo lo que dices.';
-    }
+    
+}
+    
 
     setTimeout(function () {
         addMessageToChat(response, 'bot');
