@@ -43,14 +43,14 @@ if(medico == null){
                     <tr>
                         <th scope="row">1</th>
                         <td>
-                            <button type="submit" class="btn btn-primary" name="accion" value="reporte1" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de descargas (Reporte1)')">GENERAR</button>
+                            <button type="submit" class="btn btn-primary" name="accion" value="reporte1" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de Documents (Reporte1)')">GENERAR</button>
                         </td>
                 <input type="hidden" name="menu" value="Reportes">
                 <td class="text-center"> Consolidado mensual de la cantidad de pacientes<br> ingresados a medicina general, especialidad o urgencias.</td>
                 <td>
                     <div class="form-group m-0 me-3">
                         <label class="label mb-0">
-                            <input type="text" id="mes1" name="mes1" class="form-control" placeholder=" ">
+                            <input type="text" id="mes3" name="mes1" class="form-control" placeholder=" ">
                             <span class="span" for="reporte1">Número mes:</span>
                         </label>
                     </div>
@@ -58,14 +58,14 @@ if(medico == null){
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td><button type="submit" name="accion" value="reporte2" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de descargas (Reporte 2)')">GENERAR</button></td>
+                    <td><button type="submit" name="accion" value="reporte2" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de Documents (Reporte 2)')">GENERAR</button></td>
                 <input type="hidden" name="menu" value="Reportes">
                 <td class="text-center">Número de pacientes ingresados en una sede específica<br> para cada modalidad de consulta expresado por mes.</td>
                 <td>
                     <div class="form-group m-0 me-3">
                         <label class="label mb-0">
-                            <input type="text" id="mes2" name="mes2" class="form-control" placeholder=" ">
-                            <span class="span" for="reporte2">Número mes:</span>
+                            <input type="text" id="sede" name="sede" class="form-control" placeholder=" ">
+                            <span class="span" for="reporte2">Nombre sede:</span>
                         </label>
                     </div>
                 </td>
@@ -73,7 +73,7 @@ if(medico == null){
                 <tr>
                     <th scope="row">3</th>
                     <td>
-                        <button type="submit" name="accion"value="reporte3" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de descargas (Reporte 3)')">GENERAR</button> 
+                        <button type="submit" name="accion"value="reporte3" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de Documents (Reporte 3)')">GENERAR</button> 
                         <input type="hidden" name="menu" value="Reportes">
                     </td>
                     <td class="text-center">Datos de los pacientes recibidos y sus diagnósticos.<br> Estos datos organizados por sede y por modalidad de consulta para un mes particular.</td>
@@ -89,7 +89,7 @@ if(medico == null){
                 <tr>
                     <th scope="row">4</th>
                     <td >
-                        <button type="submit" name="accion" value="reporte4" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de descargas (Reporte 4)')">GENERAR</button>
+                        <button type="submit" name="accion" value="reporte4" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de Documents (Reporte 4)')">GENERAR</button>
                         <input type="hidden" name="menu" value="Reportes">
                     </td>
                     <td class="text-center"> Exámenes solicitados  para todos los pacientes de todas<br> las modalidades de consulta organizado por sede para un mes particular.</td>
@@ -105,7 +105,7 @@ if(medico == null){
                 <tr>
                     <th scope="row">5</th>
                     <td >
-                        <button type="submit" name="accion" value="reporte5" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de descargas (Reporte 5)')">GENERAR</button>
+                        <button type="submit" name="accion" value="reporte5" class="btn btn-primary" onclick="mostrarReporte('Se ha decargado el reporte mira la carpeta de Documents (Reporte 5)')">GENERAR</button>
                         <input type="hidden" name="menu" value="Reportes">
                     </td>
                     <td>Datos de todos los pacientes que no asistieron <br> a citas programadas en un determinado mes.</td>

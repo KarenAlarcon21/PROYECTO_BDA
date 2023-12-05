@@ -82,6 +82,45 @@ function getBotResponse(message) {
 
             break;
 
+        case 'sedes':
+            response = "Las sesdes de nuestra  eps son:<br>" +
+                    "1.Hospital Esperanza A (Bogotá) <br>" +
+                    "2.Hospital Esperanza B (Bogotá) <br>" +
+                    "3.Centro Médico Serenidad A (Medellin)<br>" +
+                    "4.Centro Médico Serenidad B (Medellin)<br>" +
+                    "5.Clínica Vitalis A (Calí)<br>" +
+                    "6.Clínica Vitalis B (Calí)<br>" +
+                    "7.Hospital Renacer A (Barranquilla) <br>" +
+                    "8.Hospital Renacer B (Barranquilla)<br>" +
+                    "9.Centro de Salud Aurora A (Cartagena) <br>" +
+                    "10.Centro de Salud Aurora B (Cartagena)<br>" +
+                    "11.Clínica Harmonía  A (Cúcuta)<br>" +
+                    "12.Clínica Harmonía  B (Cúcuta)<br>" +
+                    "13.Hospital Sanar A (Villavicencio)<br>" +
+                    "14.Hospital Sanar B (Villavicencio)<br>" +
+                    "15.Centro Médico Renovación A (Pasto)<br>" +
+                    "16.Centro Médico Renovación B (Pasto)<br>" +
+                    "17.Clínica Bienestar A (Letícia)<br>" +
+                    "18.Clínica Bienestar B (Letícia)<br>";
+            break;
+
+        case 'citas':
+            response = "Los tipos de citas de nuestra eps son:<br>" +
+                    "1.Medicina general <br>" +
+                    "2.Especialidads<br>" +
+                    "3.Urgencias";
+
+            break;
+
+        case 'especialidades':
+            response = "Los tipos de Especialidad de nuestra eps son: <br>" +
+                    "1:Dermatologia<br>" +
+                    "2.Cardiologia<br>" +
+                    "3.Gastroenterología<br>" +
+                    "4.Neurologia<br>" +
+                    "5.General";
+            break;
+
         case 'cómo cancelar una cita':
             response = 'Si deseas cancelar una cita, puedes hacerlo a través de la página web. Simplemente inicia sesión en tu cuenta, selecciona la cita que deseas cancelar y sigue las instrucciones para cancelarla. Si la cita ya ha pasado, el costo de la cancelación podría aplicarse.';
             break;
