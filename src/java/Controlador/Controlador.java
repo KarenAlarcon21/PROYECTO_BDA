@@ -35,6 +35,14 @@ public class Controlador extends HttpServlet {
 
     CitaDTO cita = new CitaDTO();
     CitaDAO citaDAO = new CitaDAO();
+    String mes;
+    String sede;
+    ConsultasDTO objetoConsultas = new ConsultasDTO();
+    Enviar_Correo enviar_correo = new Enviar_Correo();
+    Encriptar_Password encriptar = new Encriptar_Password();
+    MedicoDTO medico = new MedicoDTO();
+    ConsultasDAO objetConsultasDAO = new ConsultasDAO();
+    int control = 0;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +53,6 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Enviar_Correo enviar_correo = new Enviar_Correo();
-    Encriptar_Password encriptar = new Encriptar_Password();
-    MedicoDTO medico = new MedicoDTO();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -216,6 +220,138 @@ public class Controlador extends HttpServlet {
                 default:
 
                     request.getRequestDispatcher("index.jsp").forward(request, response);
+
+            }
+
+        }
+
+        if (menu.equals("Reportes")) {
+
+            switch (accion) {
+
+                case "reporte1":
+
+                    control = 1;
+                    objetoConsultas.setControl(control);
+                    objetoConsultas.setNumero(request.getParameter("mes1"));
+
+                    /*try {
+
+                        objetConsultasDAO.verRegistros(objetoConsultas);
+
+                    } catch (SQLException ex) {
+
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+
+                    } catch (DocumentException ex) {
+
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+
+                    } catch (Object ex) {
+
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+
+                    }*/
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                    control = 0;
+
+                    break;
+
+                case "reporte2":
+
+                    /*control = 2;
+                    sede = request.getParameter("sede");
+                    objetoConsultas.setControl(control);
+                    objetoConsultas.setSede(sede);
+
+                    try {
+                        
+                        objetConsultasDAO.verRegistros(objetoConsultas);
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    } catch (DocumentException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }*/
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                    break;
+
+                case "reporte3":
+
+                    control = 3;
+                    mes = request.getParameter("mes3");
+                    objetoConsultas.setControl(control);
+                    objetoConsultas.setNumero(mes);
+
+                    /*try {
+                        
+                        objetConsultasDAO.verRegistros(objetoConsultas);
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    } catch (DocumentException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }*/
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+
+                    break;
+
+                case "reporte4":
+
+                    control = 4;
+                    mes = request.getParameter("mes4");
+                    objetoConsultas.setControl(control);
+                    objetoConsultas.setNumero(mes);
+
+                    /*try {
+                        
+                        objetConsultasDAO.verRegistros(objetoConsultas);
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    } catch (DocumentException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }*/
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+
+                    break;
+
+                case "reporte5":
+
+                    control = 5;
+                    mes = request.getParameter("mes5");
+                    objetoConsultas.setControl(control);
+                    objetoConsultas.setNumero(mes);
+
+                    /*try {
+                        
+                        objetConsultasDAO.verRegistros(objetoConsultas);
+                        
+                    } catch (SQLException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    } catch (DocumentException ex) {
+                        
+                        Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                        
+                    }*/
+
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+
+                    break;
 
             }
 
