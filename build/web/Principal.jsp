@@ -10,9 +10,9 @@
 
 <% HttpSession sesion = request.getSession();
 
-//MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
+MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
 
-//if(medico == null){
+if(medico == null){
 
 %>
 
@@ -60,10 +60,11 @@
                             </form>
                         </div>
                         <div>
-                            <form target="myFrame" action="Controlador" method="POST">
-                                <input type="hidden" name="menu" value="Historia_Medica">
-                                <input type="hidden" name="accion" value="Listar">
-                                <input type="submit" value="Historia Medica" class="btn btn-outline-light btn-notborder">
+                            <!--<form target="myFrame" action="Controlador" method="POST">-->
+                            <form target="myFrame" action="Historia_Medica.jsp">
+                                <!--<input type="hidden" name="menu" value="Historia_Medica">
+                                <input type="hidden" name="accion" value="Listar">-->
+                                <input type="submit" value="Historia Médica" class="btn btn-outline-light btn-notborder">
                             </form>
                         </div>
                         <div>
@@ -113,11 +114,11 @@
 </html>
 
 <%
-    //}else{
+    }else{
 
-    //request.getRequestDispatcher("index.jsp").forward(request, response);
+    request.getRequestDispatcher("index.jsp").forward(request, response);
 
-    //}
+    }
 
 %>
 

@@ -10,9 +10,9 @@
 
 <% HttpSession sesion = request.getSession();
 
-//MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
+MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
 
-//if(medico == null){
+if(medico == null){
 
 %>
 
@@ -46,6 +46,7 @@
                 <input type="submit" value="PacienteID" class="boton-redondo">
             </div>
         </header>
+        <hr style="color: green;"><br><br>
         <div>
             <table>
                 <thead>
@@ -62,13 +63,25 @@
                     </tr> 
                 </thead>
                 <tbody>
-                <c:forEach var="fila" items="${pacientes}">
-                    <tr>
-                    <c:forEach var="dato" items="${fila}">
-                        <td>${dato}</td>
-                    </c:forEach>
-                    </tr>
+                    <%-- 
+        <c:forEach var="fila" items="${pacientes}">
+            <tr>
+                <c:forEach var="dato" items="${fila}">
+                    <td>${dato}</td>
                 </c:forEach>
+            </tr>
+        </c:forEach>
+                    --%><tr>
+                        <td><b>Nombre</b></td>
+                        <td>Identificación</td>
+                        <td>Edad</td>
+                        <td>Médico</td>
+                        <td>Especialidad</td>
+                        <td>Ciudad</td>
+                        <td>Sede</td>
+                        <td><b>2022-03-01</b></td>
+                        <td>Sin síntomas</td>
+                    </tr>
                 </tbody>
             </table>
         </div><br>
@@ -79,11 +92,11 @@
 </html>
 
 <%
-    //}else{
+    }else{
 
-    //request.getRequestDispatcher("index.jsp").forward(request, response);
+    request.getRequestDispatcher("index.jsp").forward(request, response);
 
-    //}
+    }
 
 %>
 

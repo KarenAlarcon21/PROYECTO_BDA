@@ -5,6 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import = "Modelo.MedicoDTO" %>
+
+<% HttpSession sesion = request.getSession();
+
+MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
+
+if(medico == null){
+
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,3 +26,12 @@
         <h1>Info de miguel</h1>
     </body>
 </html>
+
+<%
+    }else{
+
+    request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
+
+%>

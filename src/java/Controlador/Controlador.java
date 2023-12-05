@@ -32,7 +32,7 @@ import javax.crypto.SecretKey;
  */
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
-    
+
     CitaDTO cita = new CitaDTO();
     CitaDAO citaDAO = new CitaDAO();
 
@@ -138,10 +138,9 @@ public class Controlador extends HttpServlet {
             switch (accion) {
 
                 case "Listar":
-                    
-                    List<List<Object>> lista = citaDAO.listar();
-                    request.setAttribute("pacientes", lista);
 
+                    // List<List<Object>> lista = citaDAO.listar();
+                    //request.setAttribute("pacientes", lista);
                     break;
 
             }

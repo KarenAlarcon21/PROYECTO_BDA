@@ -10,9 +10,9 @@
 
 <% HttpSession sesion = request.getSession();
 
-//MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
+MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
 
-//if(medico == null){
+if(medico == null){
 
 %>
 
@@ -26,21 +26,23 @@
         <link href="css/estilo.css" rel="stylesheet" type="text/css">
         <link href="css/chatbot.css" rel="stylesheet" type="text/css">
         <link href="css/principal.css" rel="stylesheet" type="text/css">
-        
     </head>
-    <body style="margin: 0; padding: 0; background-color: white;"> 
-        <div class="container-fluid p-4  text-black" style="background-color: #F0F0E7  ;">
-        <h1>Historial Citas</h1>
-        <hr style="color: green;">
-        <form>
-            <label for="identificador_p">Buscar paciente</label><br>
-            <input type="text" id="identificador_p" name="identificador_p" style="background-color: #8cff1a;">
-            <img src="https://static.vecteezy.com/system/resources/previews/007/749/074/original/bright-green-tick-checkmark-icon-free-vector.jpg"
-                 alt="Buscar" width="25" height="25" onclick="">
-        </form>
-        </div>
-        <div class="container mt-3" style="font-align: center">
-            <table class="table table-bordered" style="border: 2px #79CD12;">
+    <body style="margin: 0; padding: 0; background-color: #E5E5E5;"> 
+        <header class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+            <h1 class="m-0">Historial Citas</h1>
+            <div class="d-flex align-items-center">
+                <div class="form-group m-0 me-3">
+                    <label class="label mb-0">
+                        <input type="text" name="txt_PacienteID" class="form-control" placeholder=" ">
+                        <span class="span">Buscar Paciente:</span>
+                    </label>
+                </div>
+                <input type="submit" value="PacienteID" class="boton-redondo">
+            </div>
+        </header>
+        <hr style="color: green;"><br><br>
+        <div>
+            <table>
                 <thead>
                     <tr style="color: red;">
                         <th>ID CITA</th>
@@ -56,35 +58,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>ID Cita 1</td>
-                    <td>Encargado 1</td>
-                    <td>Licencia 1</td>
-                    <td>Nombre 1</td>
-                    <td>ID 1</td>
-                    <td>Edad 1</td>
-                    <td>Programa 1</td>
-                    <td>Fecha Cita 1</td>
-                    <td><img src="chulo.png" alt="Asistió"></td>
-                    <td><img src="x.png" alt="Cancelar"></td>
-                </tr>
+                    <tr>
+                        <td>ID Cita 1</td>
+                        <td>Encargado 1</td>
+                        <td>Licencia 1</td>
+                        <td>Nombre 1</td>
+                        <td>ID 1</td>
+                        <td>Edad 1</td>
+                        <td>Programa 1</td>
+                        <td>Fecha Cita 1</td>
+                        <td>
+                            <div class="form-group m-0 me-3">
+                                <h5></h5> 
+                            </div>
+                            <input type="label" value="Aceptado" class="boton-redondo">
+                        </td>
+                        <td>
+                            <div class="form-group m-0 me-3">
+                                <h5></h5> 
+                            </div>
+                            <input type="submit" value="Cancelar" class="boton-redondo-x">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-        </div>
-        <button id="openChat"><img src="https://cdn-icons-png.flaticon.com/128/4712/4712076.png" alt="Asistente" title="Asistente Virtual"><i class="fas fa-robot"></i></button>
-        <div id="chatbot" class="hidden px-4 py-3">
-            <h4>Asistente Virtual</h4>
-            <div id="chat"></div>
-            <label class="label">
-                <input id="userInput" type="text" class="form-control" 
-                       placeholder=" ">
-                <span class="span">Escribe un mensaje...</span>
-            </label>
-            <div id="suggestions"></div>
-            <button class="btn btn-success" id="sendButton">Enviar</button>
-            <button id="closeChat">X</button>
-        </div>
-        <script src="js/chatbot.js"></script><br>
+        </div>        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
@@ -92,11 +90,11 @@
 </html>
 
 <%
-    //}else{
+    }else{
 
-    //request.getRequestDispatcher("index.jsp").forward(request, response);
+    request.getRequestDispatcher("index.jsp").forward(request, response);
 
-    //}
+    }
 
 %>
 
