@@ -102,7 +102,7 @@ public class Validar extends HttpServlet {
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute("usuario", medico);
 
-                    request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
 
                     sesion.removeAttribute("usuario");
                     sesion.invalidate();

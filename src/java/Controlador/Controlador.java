@@ -19,10 +19,14 @@ import java.time.LocalDate;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.SecretKey;
 import javax.mail.MessagingException;
+import Modelo.Consultas;
+import com.lowagie.text.DocumentException;
+import java.sql.SQLException;
 
 /**
  *
@@ -30,6 +34,10 @@ import javax.mail.MessagingException;
  */
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
+    int control=0;
+    String mes;
+    String sede;
+    Consultas objetoConsultas = new Consultas();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,9 +51,12 @@ public class Controlador extends HttpServlet {
     Enviar_Correo enviar_correo = new Enviar_Correo();
     Encriptar_Password encriptar = new Encriptar_Password();
     MedicoDTO medico = new MedicoDTO();
+    ConsultasDAO objetConsultasDAO = new ConsultasDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -91,10 +102,15 @@ public class Controlador extends HttpServlet {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         HttpSession sesion = request.getSession(false);
-
+        System.out.println("accion:" + accion);
+         System.out.println("menu:" + menu);
         if (menu.equals("Principal")) {
-
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }
+        
+       if (accion.equals("Reportes")) {
+
+            request.getRequestDispatcher("Reportes.jsp").forward(request, response);
 
         }
 
@@ -245,6 +261,10 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
 
                     break;
+                    
+                case "Reportes":
+                    request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                    break;
 
                 default:
 
@@ -253,6 +273,125 @@ public class Controlador extends HttpServlet {
             }
 
         }
+        
+        
+        if(menu.equals("Reportes")){
+          switch(accion){
+          
+              case "reporte1":
+                  control=1;
+                  objetoConsultas.setControl(control);
+                  objetoConsultas.setNumero(request.getParameter("mes1"));
+                  System.out.println("controlador mes: " + objetoConsultas.getNumero());
+              {
+                  try {
+                      objetConsultasDAO.verRegistros(objetoConsultas);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                  } catch (DocumentException ex) {
+                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              }
+                  request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                  control =0;
+                  break;
+
+                  
+                case "reporte2":
+                  control=2;  
+                  sede= request.getParameter("sede");
+                   objetoConsultas.setControl(control);
+                   objetoConsultas.setSede(sede);
+                  System.out.println("sede:" + sede);
+              {
+                  try {
+                      objetConsultasDAO.verRegistros(objetoConsultas);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                  } catch (DocumentException ex) {
+                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              }
+                  request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                  break;    
+    
+                  
+                
+                  case "reporte3":
+                   control=3;
+                   mes=request.getParameter("mes3");
+                   objetoConsultas.setControl(control);
+                   objetoConsultas.setNumero(mes);
+                   System.out.println("mes:" + mes);
+              {
+                  try {
+                      objetConsultasDAO.verRegistros(objetoConsultas);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                  } catch (DocumentException ex) {
+                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              }
+                  request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                  break;    
+    
+          
+                  
+                  case "reporte4":
+                   control=4;
+                   mes=request.getParameter("mes4");
+                      System.out.println("mes:" + mes);
+                   objetoConsultas.setControl(control);
+                   objetoConsultas.setNumero(mes);
+              {
+                  try {
+                      objetConsultasDAO.verRegistros(objetoConsultas);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                  } catch (DocumentException ex) {
+                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              }
+                  request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                  break;  
+  
+          
+                  
+                      
+                  case "reporte5":
+                   control=5;
+                   mes=request.getParameter("mes5");
+                   System.out.println("mes:" + mes);
+                   objetoConsultas.setControl(control);
+                   objetoConsultas.setNumero(mes);
+              {
+                  try {
+                      objetConsultasDAO.verRegistros(objetoConsultas);
+                  } catch (SQLException ex) {
+                      Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                  } catch (DocumentException ex) {
+                  Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+              }
+              }
+                  request.getRequestDispatcher("Reportes.jsp").forward(request, response);
+                  break;  
+  
+          
+          
+          
+          
+          
+          
+          
+          }
+        
+        
+        
+        }
+        
+
+
+        
     }
 
     private static String nuevaContraseña() {

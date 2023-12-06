@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import = "Modelo.MedicoDTO" %>
-
+<%@page import = "Modelo.Consultas" %>
 <% HttpSession sesion = request.getSession();
 
 //MedicoDTO medico = (MedicoDTO) sesion.getAttribute("txtuser");
@@ -32,28 +32,14 @@
             <img src="Imagenes/Logo.png" style="margin: 5px;" alt="Logo" width="50" height="50">
             <div class="container-fluid">                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <form action="Controlador" method="POST ">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Principal&accion=Inicio"><b>Inicio</b></a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Citas_Agendadas&accion=Listar" target="myFrame"><b>Citas Agendadas</b></a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Historial_Citas&accion=Listar" target="myFrame"><b>Historial de Citas</b></a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Informacion_Pacientes&accion=Listar" target="myFrame"><b>Información Pacientes</b></a>
-                        </li>
-                        <li class="nav-item">
-                            <a style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Remitir_Paciente&accion=default" target="myFrame"><b>Remitir Paciente</b></a>
-                        </li>
-                    </ul>
-                    <form action="Controlador" method="POST" style="display: inline;">
-                        <input type="hidden" name="menu" value="Principal_Menu">
-                        <input type="hidden" name="accion" value="Cerrar_Sesion">
-                        <button type="submit" style="border: none;" class="btn btn-outline-success" aria-current="page"><b>Cerrar Sesion</b></button>
+                                <button style="border: none;" class="btn btn-outline-light" aria-current="page" href="Controlador?menu=Principal_Menu&accion=Reportes" target="myFrame"><b>Reportes</b></button>
+                            </li>
+                        </ul>
                     </form>
+             
                 </div>
             </div>
         </header>        
@@ -109,16 +95,21 @@
             <h4>Asistente Virtual</h4>
             <div id="chat"></div>
             <label class="label">
-                <input id="userInput" type="text" class="form-control" 
-                       placeholder=" ">
+                <input id="userInput" type="text" class="form-control "  
+                       placeholder="">
                 <span class="span">Escribe un mensaje...</span>
             </label>
             <div id="suggestions"></div>
+
             <button class="btn btn-success" id="sendButton">Enviar</button>
             <button id="closeChat">X</button>
         </div>
         <script src="js/chatbot.js"></script><br>
+
+
+
         <footer class="social-links">
+
             <p>&copy; 2023 EPS ServiSalud. Todos los derechos reservados.</p>
             <p>
                 <img src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt="Facebook" width="50" height="50" onclick="window.open('https://www.facebook.com', '_blank')">

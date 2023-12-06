@@ -6,7 +6,7 @@ let chatStarted = false;
 let chatbot = document.getElementById('chatbot');
 let openChat = document.getElementById('openChat');
 let closeChat = document.getElementById('closeChat');
-let bandera=0;
+
 
 openChat.addEventListener('click', function () {
     chatbot.classList.remove('hidden');
@@ -38,10 +38,7 @@ function getBotResponse(message) {
     let response = '';
     let conversationState = '';
      let messageLowerCase = message.toLowerCase();
-     
-     if(bandera == 1 || bandera == 2 || bandera == 3 || bandera == 4 || bandera == 5 ){
-       filtro(messageLowerCase);   
-     }else{
+  
     switch (messageLowerCase) {
 
         case 'hola':
@@ -81,8 +78,7 @@ function getBotResponse(message) {
                     '2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br>' +
                     '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br>' +
                     '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br>' +
-                    '5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>' +
-                    'elige el numero del reporte que quires solicitar';
+                    '5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>';
         
             break;
 
@@ -122,39 +118,10 @@ function getBotResponse(message) {
             break;
         default:
             response = 'Lo siento, no entiendo lo que dices.';
-    
+          break;
 }
-   }
-function filtro(messageLowerCase){
-    let inputArray = messageLowerCase;
-switch(bandera){
-        case 1:
-              let mes1 = inputArray;
-                  response = `mes:(${mes1}) <br>`;
-        break;
-        case 2:
-            let sede=inputArray;
-             response = `sede:(${sede}) `;
-            break;
-        case 3:
-            let mes3 = inputArray;
-             response = `mes:(${mes3}) <br>`;
-            break; 
-        case 4: 
-             let mes4 = inputArray;
-             response = `mes:(${mes4}) <br>`;  
-            break;
-        case 5:
-         let mes5 = inputArray;
-             response = `mes:(${mes5}) <br>`;  
-            break;
-            
-        default:
-         response = 'Ha ocurrido un error. Inténtelo de nuevo.';
-}
+   
 
-   bandera = 0; // Restablecer la bandera después de procesar la información adicional.  
-}
     setTimeout(function () {
         addMessageToChat(response, 'bot');
     }, 1000);
