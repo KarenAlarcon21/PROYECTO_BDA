@@ -6,6 +6,7 @@ let chatStarted = false;
 let chatbot = document.getElementById('chatbot');
 let openChat = document.getElementById('openChat');
 let closeChat = document.getElementById('closeChat');
+let bandera=0;
 
 openChat.addEventListener('click', function () {
     chatbot.classList.remove('hidden');
@@ -33,11 +34,14 @@ function addMessageToChat(message, type) {
 }
 
 function getBotResponse(message) {
-    let bandera=0;
+    
     let response = '';
-  
-
-       let messageLowerCase = message.toLowerCase();
+    let conversationState = '';
+     let messageLowerCase = message.toLowerCase();
+     
+     if(bandera == 1 || bandera == 2 || bandera == 3 || bandera == 4 || bandera == 5 ){
+       filtro(messageLowerCase);   
+     }else{
     switch (messageLowerCase) {
 
         case 'hola':
@@ -63,23 +67,23 @@ function getBotResponse(message) {
 
         case 'cómo usar la página web':
             response = 'El uso de la página web implica seguir estos pasos: <br><br>' +
-                    '1. El usuario debe ingresar su nombre de usuario y contraseña. <br><br>' +
-                    '2. Tras el inicio de sesión, se accede a la página principal. <br><br>' +
-                    '3. En la barra de navegación ubicada en la parte superior, se encuentran diversas opciones. <br><br>' +
-                    '4. Seleccionar una opción conduce a la página correspondiente. <br><br>' +
+                    '1. El usuario debe ingresar su nombre de usuario y contraseña. <br>' +
+                    '2. Tras el inicio de sesión, se accede a la página principal. <br>' +
+                    '3. En la barra de navegación ubicada en la parte superior, se encuentran diversas opciones. <br>' +
+                    '4. Seleccionar una opción conduce a la página correspondiente. <br>' +
                     '¿Tienes alguna otra pregunta?';
                    
             break;
 
         case 'reportes':
             response = 'Los reportes que puedo generar son los siguientes: <br><br>' +
-                    '1.Consolidado mensual de la cantidad de pacientes ingresados a medicina general, especialidad o urgencias.<br><br>' +
-                    '2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br><br>' +
-                    '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br><br>' +
-                    '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br><br>' +
+                    '1.Consolidado mensual de la cantidad de pacientes ingresados a medicina general, especialidad o urgencias.<br>' +
+                    '2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br>' +
+                    '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br>' +
+                    '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br>' +
                     '5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>' +
                     'elige el numero del reporte que quires solicitar';
-             bandera=1;
+        
             break;
 
         case 'cómo cancelar una cita':
@@ -87,23 +91,28 @@ function getBotResponse(message) {
             break;
 
           case '1':
-                response= '1.Consolidado mensual de la cantidad de pacientes ingresados a medicina general, especialidad o urgencias.<br><br>';
-                break;
+                bandera=1;
+                response='Por favor, proporciona numero el mes.';
+            break;
             
             case '2':
-            response='2.Número de pacientes ingresados en una sede específica para cada modalidad de consulta expresado por mes. <br><br>';
+                bandera = 2;
+            response='2.Por favor,proporciona el nombre de la sede.';
                 break;
                 
             case '3':
-               response = '3.Datos de los pacientes recibidos y sus diagnósticos. Estos datos organizados por sede y por modalidad de consulta para un mes particular. <br><br>';
+                bandera = 3;
+               response = '3.Por favor digita el numero del mes. <br>';
             break;
            
             case '4':
-                response= '4.Exámenes solicitados  para todos los pacientes de todas las modalidades de consulta organizado por sede para un mes particular. <br><br>';
+                bandera = 4;
+                response= '4.proporciona el numero del mes. <br>';
                 break;
                 
             case '5':
-            response='5.Datos de todos los pacientes que no asistieron a citas programadas en un determinado mes. <br><br>';
+                bandera = 5;
+            response='5.proporciona el numero del mes.<br>';
                 break;
                 
         case 'adios':
@@ -115,8 +124,37 @@ function getBotResponse(message) {
             response = 'Lo siento, no entiendo lo que dices.';
     
 }
-    
+   }
+function filtro(messageLowerCase){
+    let inputArray = messageLowerCase;
+switch(bandera){
+        case 1:
+              let mes1 = inputArray;
+                  response = `mes:(${mes1}) <br>`;
+        break;
+        case 2:
+            let sede=inputArray;
+             response = `sede:(${sede}) `;
+            break;
+        case 3:
+            let mes3 = inputArray;
+             response = `mes:(${mes3}) <br>`;
+            break; 
+        case 4: 
+             let mes4 = inputArray;
+             response = `mes:(${mes4}) <br>`;  
+            break;
+        case 5:
+         let mes5 = inputArray;
+             response = `mes:(${mes5}) <br>`;  
+            break;
+            
+        default:
+         response = 'Ha ocurrido un error. Inténtelo de nuevo.';
+}
 
+   bandera = 0; // Restablecer la bandera después de procesar la información adicional.  
+}
     setTimeout(function () {
         addMessageToChat(response, 'bot');
     }, 1000);
